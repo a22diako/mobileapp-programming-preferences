@@ -21,6 +21,18 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, MainActivity.class);
                 intent.putExtra( "name", "diana");
                 startActivity(intent);
+                // in My MainActivity class
+                private SharedPreferences myPreferenceRef;
+                private SharedPreferences.Editor myPreferenceEditor;
+
+// In onCreate()
+                myPreferenceRef = getPreferences(MODE_PRIVATE);
+                myPreferenceEditor = myPreferenceRef.edit();
+
+// Read a preference
+                TextView prefTextRef=new TextView(this);
+                prefTextRef=(TextView)findViewById(R.id.prefText);
+                prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference found."));
             }
         });
     }
