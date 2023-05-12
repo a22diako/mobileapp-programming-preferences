@@ -1,38 +1,46 @@
 package com.example.project;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity {
+    // in My MainActivity class
+    private SharedPreferences myPreferenceRef;
+    private SharedPreferences.Editor myPreferenceEditor;
+    private TextView data1;
+
+    private TextView prefTextRef;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button button = findViewById(R.id.button2);
+        button = findViewById(R.id.button2);
+        // In onCreate()
+        data1 = findViewById(R.id.textView2);
+        myPreferenceRef = getPreferences( MODE_PRIVATE);
+        myPreferenceEditor = myPreferenceRef.edit();
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                intent.putExtra( "name", "diana");
                 startActivity(intent);
-                // in My MainActivity class
-                private SharedPreferences myPreferenceRef;
-                private SharedPreferences.Editor myPreferenceEditor;
 
-// In onCreate()
-                myPreferenceRef = getPreferences(MODE_PRIVATE);
-                myPreferenceEditor = myPreferenceRef.edit();
 
 // Read a preference
-                TextView prefTextRef=new TextView(this);
-                prefTextRef=(TextView)findViewById(R.id.prefText);
-                prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference found."));
+           //     prefTextRef=(TextView)findViewById(R.id.textView2);
+            //    prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference found."));
             }
         });
     }
