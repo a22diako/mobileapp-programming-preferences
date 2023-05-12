@@ -2,6 +2,7 @@ package com.example.project;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,22 +27,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.button2);
-        // In onCreate()
         data1 = findViewById(R.id.textView2);
-        myPreferenceRef = getPreferences( MODE_PRIVATE);
+        myPreferenceRef = getSharedPreferences( "preferences", MODE_PRIVATE);
         myPreferenceEditor = myPreferenceRef.edit();
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                 startActivity(intent);
-
-
-// Read a preference
-           //     prefTextRef=(TextView)findViewById(R.id.textView2);
-            //    prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference found."));
             }
         });
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        String Text= myPreferenceRef.getString("Text","Nothing Found");
+        data1.setText(Text);
     }
 }
