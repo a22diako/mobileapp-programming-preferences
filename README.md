@@ -1,8 +1,6 @@
 
 
-RAPPORT: PREFERENCE
-
-## Följande grundsyn gäller dugga-svar:
+RAPPORT PREFERENCE
 
 I denna uppgift ska man göra en second activity vilket är en annan aktivitet som huvud/main activity är kopplad till genom en knapp som går från huvudsidan till second activity.
 
@@ -31,5 +29,5 @@ I koden nedanför i onCreats sätts en layout för vald aktivitet samt textview 
 ```
 
 
-![](Ha_20230525.png)
+![](Ha_20230525_113919.png)
 
